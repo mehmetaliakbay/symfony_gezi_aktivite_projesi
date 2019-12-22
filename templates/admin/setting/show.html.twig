@@ -1,0 +1,123 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Hello AdminController!
+{% endblock %}
+{% block body %}
+
+	<div class="main-panel">
+		<div class="content">
+			<div class="panel-header bg-primary-gradient">
+				<div class="page-inner py-5">
+					<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row"></div>
+				</div>
+			</div>
+			<div class="page-inner mt--5">
+				<div class="row-md-12 mt--2">
+					<div class="col-md-12">
+						<div class="card full-height">
+							<div class="card-body">
+								<div class="card-title">Setting New</div>
+								<div class="flex-wrap justify-content-around pb-2 pt-4">
+
+									<table class="table">
+										<tbody>
+											<tr>
+												<th>Id</th>
+												<td>{{ setting.id }}</td>
+											</tr>
+											<tr>
+												<th>Title</th>
+												<td>{{ setting.title }}</td>
+											</tr>
+											<tr>
+												<th>Keywords</th>
+												<td>{{ setting.keywords }}</td>
+											</tr>
+											<tr>
+												<th>Description</th>
+												<td>{{ setting.description }}</td>
+											</tr>
+											<tr>
+												<th>Company</th>
+												<td>{{ setting.company }}</td>
+											</tr>
+											<tr>
+												<th>Adress</th>
+												<td>{{ setting.adress }}</td>
+											</tr>
+											<tr>
+												<th>Phone</th>
+												<td>{{ setting.phone }}</td>
+											</tr>
+											<tr>
+												<th>Fax</th>
+												<td>{{ setting.fax }}</td>
+											</tr>
+											<tr>
+												<th>Email</th>
+												<td>{{ setting.email }}</td>
+											</tr>
+											<tr>
+												<th>Smtpserver</th>
+												<td>{{ setting.smtpserver }}</td>
+											</tr>
+											<tr>
+												<th>Smtpemail</th>
+												<td>{{ setting.smtpemail }}</td>
+											</tr>
+											<tr>
+												<th>Smtppassword</th>
+												<td>{{ setting.smtppassword }}</td>
+											</tr>
+											<tr>
+												<th>Smtpport</th>
+												<td>{{ setting.smtpport }}</td>
+											</tr>
+											<tr>
+												<th>Facebook</th>
+												<td>{{ setting.facebook }}</td>
+											</tr>
+											<tr>
+												<th>Instagram</th>
+												<td>{{ setting.instagram }}</td>
+											</tr>
+											<tr>
+												<th>Twitter</th>
+												<td>{{ setting.twitter }}</td>
+											</tr>
+											<tr>
+												<th>Aboutus</th>
+												<td>{{ setting.aboutus | raw}}</td>
+											</tr>
+											<tr>
+												<th>Contact</th>
+												<td>{{ setting.contact | raw}}</td>
+											</tr>
+											<tr>
+												<th>Reference</th>
+												<td>{{ setting.reference | raw}}</td>
+											</tr>
+											<tr>
+												<th>Status</th>
+												<td>{{ setting.status }}</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<a href="{{ path('setting_index') }}">back to list</a>
+
+									<a href="{{ path('setting_edit', {'id': setting.id}) }}">edit</a>
+
+									{{ include('admin/setting/_delete_form.html.twig') }}
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+
+	{% endblock %}

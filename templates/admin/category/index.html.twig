@@ -1,0 +1,80 @@
+{% extends 'adminbase.html.twig' %} {% block title %}Category index{% endblock %} {% block body %}
+<div class="main-panel">
+    <div class="content">
+        <div class="panel-header bg-primary-gradient">
+            <div class="page-inner py-5">
+                <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                  
+
+                </div>
+            </div>
+        </div>
+        <div class="page-inner mt--5">
+            <div class="row-md-12 mt--2">
+                <div class="col-md-12">
+                    <div class="card full-height">
+                        <div class="card-body">
+                            <div class="card-title pb-2 fw-bold"> Kategoriler</div>
+                            
+                            <div class="flex-wrap justify-content-around pb-2 pt-4">
+
+                                <table class="table table-bordered table-head-bg-info table-bordered-bd-info mt-4">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Parentid</th>
+                                            <th>Title</th>
+                                            <th>Keywords</th>
+                                            <th>Description</th>
+                                            <th>Image</th>
+                                            <th>Status</th>
+                                            <th>Created_at</th>
+                                            <th>Updated_at</th>
+                                            <th>actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for category in categories %}
+                                        <tr>
+                                            <td>{{ category.id }}</td>
+                                            <td>{{ category.parentid }}</td>
+                                            <td>{{ category.title }}</td>
+                                            <td>{{ category.keywords }}</td>
+                                            <td>{{ category.description }}</td>
+                                            <td>{{ category.image }}</td>
+                                            <td>{{ category.status }}</td>
+                                            <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                            <td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                            <td>
+                                                <a href="{{ path('admin_category_show', {'id': category.id}) }}">show</a>
+                                                <a href="{{ path('admin_category_edit', {'id': category.id}) }}">edit</a>
+                                            </td>
+                                        </tr>
+                                        {% else %}
+                                        <tr>
+                                            <td colspan="10">no records found</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+
+                                <a href="{{ path('admin_category_new') }}">Create new</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    {% endblock %}

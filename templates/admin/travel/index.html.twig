@@ -1,0 +1,100 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Travel index
+{% endblock %}
+
+{% block body %}
+
+<SCRIPT language="JavaScript" type="text/javascript">
+	function openWin( windowURL, windowName,windowFeatures) { window.open(windowURL, windowName, windowFeatures); }
+</SCRIPT>
+
+	<div class="main-panel" style="width:1550px;">
+		<div class="content">
+			<div class="panel-header bg-primary-gradient">
+				<div class="page-inner py-5">
+					<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row"></div>
+				</div>
+			</div>
+			<div class="page-inner mt--5">
+				<div class="d-lg-table-row">
+					<div class="col-md-12">
+						<div class="card full-height">
+							<div class="card-body">
+								<div class="card-title pb-2 fw-bold">Geziler ve Aktiviteler</div>
+								<div class="flex-wrap justify-content-around pb-2 pt-4">
+
+									<table class="table table-bordered table-head-bg-info table-bordered-bd-info mt-4">
+										<thead>
+											<tr>
+												<th>Id</th>
+												<th>Kategori</th>
+												<th>Title</th>
+												<th>Keywords</th>
+												<th>Description</th>
+												<th>Image</th>
+												<th>Status</th>
+												<th>Star</th>
+												<th>Address</th>
+												{# <th>Phone</th>
+												                <th>Fax</th> #}
+												<th>Email</th>
+												<th>City</th>
+												<th>Country</th>
+												<th>Gallery</th>
+												<th>Location</th>
+												{# <th>Created_at</th>
+												                <th>Updated_at</th> #}
+												<th>actions</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for travel in travels %}
+												<tr>
+													<td>{{ travel.id }}</td>
+													<td>{{ travel.category }}</td>
+													<td>{{ travel.title }}</td>
+													<td>{{ travel.keywords }}</td>
+													<td>{{ travel.description }}</td>
+													<td><img src="{{asset('uploads/images/'~travel.image)}}" height="40"></td>
+													<td>{{ travel.status }}</td>
+													<td>{{ travel.star }}</td>
+													<td>{{ travel.address }}</td>
+													{# <td>{{ travel.phone }}</td>
+													                <td>{{ travel.fax }}</td> #}
+													<td>{{ travel.email }}</td>
+													<td>{{ travel.city }}</td>
+													<td>{{ travel.country }}</td>
+													<td>
+														<a href="javascript:openWin('{{ path('admin_image_new',{'id':travel.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=50,left=100,menuBar=no,scrollBars=yes,resizable=no,width=900,height=700');">                  
+														<img src="{{asset('assets/admin/assets/img')}}/gallery.png" height="40">
+														</a>
+													</td>	
+													<td>{{ travel.location }}</td>
+													{# <td>{{ travel.createdAt ? travel.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+													                <td>{{ travel.updatedAt ? travel.updatedAt|date('Y-m-d H:i:s') : '' }}</td> #}
+													<td>
+														<a href="{{ path('admin_travel_show', {'id': travel.id}) }}">show</a>
+														<a href="{{ path('admin_travel_edit', {'id': travel.id}) }}">edit</a>
+													</td>
+												</tr>
+											{% else %}
+												<tr>
+													<td colspan="17">no records found</td>
+												</tr>
+											{% endfor %}
+										</tbody>
+									</table>
+
+									<a href="{{ path('admin_travel_new') }}">Create new</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+	{% endblock %}

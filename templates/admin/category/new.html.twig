@@ -1,0 +1,35 @@
+{% extends 'adminbase.html.twig' %} {% block title %}New Category{% endblock %} {% block body %}
+
+<div class="main-panel">
+    <div class="content">
+        <div class="panel-header bg-primary-gradient">
+            <div class="page-inner py-5">
+                <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                 
+
+                </div>
+            </div>
+        </div>
+        <div class="page-inner mt--5">
+            <div class="row-md mt--2">
+                <div class="col-md">
+                    <div class="card full-height">
+                        <div class="card-body">
+<div class="card-title pb-2 fw-bold">Yeni Kategori Olustur</div>
+                            <div class=" flex-wrap justify-content-around pb-2 pt-4">
+
+
+                                {{ include('admin/category/_form.html.twig') }}
+
+                                <a href="{{ path('admin_category_index') }}"><button class="btn">back to list</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    {% endblock %}

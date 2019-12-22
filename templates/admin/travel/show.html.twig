@@ -1,0 +1,106 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Travel
+{% endblock %}
+
+{% block body %}
+	<div class="main-panel">
+		<div class="content">
+			<div class="panel-header bg-primary-gradient">
+				<div class="page-inner py-5">
+					<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row"></div>
+				</div>
+			</div>
+			<div class="page-inner mt--5">
+				<div class="row-md-12 mt--2">
+					<div class="col-md-12">
+						<div class="card full-height">
+							<div class="card-body">
+								<div class="card-title pb-2 fw-bold">Gezi ve Aktiviteleri Goster</div>
+								<div class="flex-wrap justify-content-around pb-2 pt-4">
+
+									<table class="table">
+										<tbody>
+											<tr>
+												<th>Id</th>
+												<td>{{ travel.id }}</td>
+											</tr>
+											<tr>
+												<th>Title</th>
+												<td>{{ travel.title }}</td>
+											</tr>
+											<tr>
+												<th>Keywords</th>
+												<td>{{ travel.keywords }}</td>
+											</tr>
+											<tr>
+												<th>Description</th>
+												<td>{{ travel.description }}</td>
+											</tr>
+											<tr>
+												<th>Image</th>
+												<td><img src="{{asset('uploads/images/'~travel.image)}}" height="40"></td>
+											</tr>
+											<tr>
+												<th>Status</th>
+												<td>{{ travel.status }}</td>
+											</tr>
+											<tr>
+												<th>Star</th>
+												<td>{{ travel.star }}</td>
+											</tr>
+											<tr>
+												<th>Address</th>
+												<td>{{ travel.address }}</td>
+											</tr>
+											<tr>
+												<th>Phone</th>
+												<td>{{ travel.phone }}</td>
+											</tr>
+											<tr>
+												<th>Fax</th>
+												<td>{{ travel.fax }}</td>
+											</tr>
+											<tr>
+												<th>Email</th>
+												<td>{{ travel.email }}</td>
+											</tr>
+											<tr>
+												<th>City</th>
+												<td>{{ travel.city }}</td>
+											</tr>
+											<tr>
+												<th>Country</th>
+												<td>{{ travel.country }}</td>
+											</tr>
+											<tr>
+												<th>Location</th>
+												<td>{{ travel.location }}</td>
+											</tr>
+											<tr>
+												<th>Created_at</th>
+												<td>{{ travel.createdAt ? travel.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+											</tr>
+											<tr>
+												<th>Updated_at</th>
+												<td>{{ travel.updatedAt ? travel.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<a href="{{ path('admin_travel_index') }}">back to list</a>
+
+									<a href="{{ path('admin_travel_edit', {'id': travel.id}) }}">edit</a>
+
+									{{ include('admin/travel/_delete_form.html.twig') }}
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+	{% endblock %}
