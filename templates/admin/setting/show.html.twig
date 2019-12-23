@@ -103,11 +103,19 @@
 										</tbody>
 									</table>
 
-									<a href="{{ path('setting_index') }}">back to list</a>
 
-									<a href="{{ path('setting_edit', {'id': setting.id}) }}">edit</a>
+									<a href="{{ path('setting_edit', {'id': setting.id}) }}">
+										<button class="btn btn-primary">Edit</button>
+									</a>
+									<br>
+									<br>
 
 									{{ include('admin/setting/_delete_form.html.twig') }}
+									<br>
+									<br>
+									<a href="{{ path('setting_index') }}">
+										<button class="btn btn-default btn-sm">Back the list</button>
+									</a>
 								</div>
 							</div>
 						</div>

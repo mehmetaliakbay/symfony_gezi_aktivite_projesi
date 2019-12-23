@@ -18,12 +18,21 @@
 							<div class="card-body">
 								<div class="card-title pb-2 fw-bold">Geziler ve Aktiviteler Duzenle</div>
 								<div class="flex-wrap justify-content-around pb-2 pt-4">
+									<br>
+									<br>
 
 									{{ include('admin/travel/_form.html.twig', {'button_label': 'Update'}) }}
 
-									<a href="{{ path('admin_travel_index') }}">back to list</a>
+									<br>
+
 
 									{{ include('admin/travel/_delete_form.html.twig') }}
+									<br>
+									<br>
+									<a href="{{ path('admin_travel_index') }}">
+										<button class="btn btn-default btn-sm">Back the list</button>
+									</a>
+
 
 								</div>
 							</div>

@@ -4,12 +4,12 @@
 		<div class="sidebar-content">
 			<div class="user">
 				<div class="avatar-sm float-left mr-2">
-					<img src="{{asset('assets')}}/admin/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+					<img src="{{asset('uploads/images/' ~ app.user.image)}}" alt="..." class="avatar-img rounded-circle">
 				</div>
 				<div class="info">
 					<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 						<span>
-							Hizrian
+							{{app.user.name}}
 							<span class="user-level">Administrator</span>
 							<span class="caret"></span>
 						</span>
@@ -29,8 +29,8 @@
 								</a>
 							</li>
 							<li>
-								<a href="#settings">
-									<span class="link-collapse">Settings</span>
+								<a href="{{path('app_logout')}}">
+									<span class="link-collapse">Log Out</span>
 								</a>
 							</li>
 						</ul>
@@ -53,11 +53,18 @@
 					</a>
 				</li>
 
-                <li class="nav-item">
+				<li class="nav-item">
 					<a href="/admin/setting">
 						<i class="fas fa-cog"></i>
 						<p>Settings</p>
-					
+
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="/admin/user">
+						<i class="fas fa-address-card"></i>
+						<p>Users</p>
+
 					</a>
 				</li>
 				<li class="nav-item">

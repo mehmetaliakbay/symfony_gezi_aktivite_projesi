@@ -1,0 +1,95 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}user show
+{% endblock %}
+
+{% block body %}
+	<div class="main-panel">
+		<div class="content">
+			<div class="panel-header bg-primary-gradient">
+				<div class="page-inner py-5">
+					<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row"></div>
+				</div>
+			</div>
+			<div class="page-inner mt--5">
+				<div class="row-md-12 mt--2">
+					<div class="col-md-12">
+						<div class="card full-height">
+							<div class="card-body">
+								<div class="card-title pb-2 fw-bold">User Show</div>
+								<div class="flex-wrap justify-content-around pb-2 pt-4">
+									<table class="table">
+										<tbody>
+											<tr>
+												<th>Id</th>
+												<td>{{ user.id }}</td>
+											</tr>
+											<tr>
+												<th>Email</th>
+												<td>{{ user.email }}</td>
+											</tr>
+											<tr>
+												<th>Roles</th>
+												<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+											</tr>
+											<tr>
+												<th>Password</th>
+												<td>{{ user.password }}</td>
+											</tr>
+											<tr>
+												<th>Name</th>
+												<td>{{ user.name }}</td>
+											</tr>
+											<tr>
+												<th>Surname</th>
+												<td>{{ user.surname }}</td>
+											</tr>
+											<tr>
+												<th>Image</th>
+												<td>{{ user.image }}</td>
+											</tr>
+											<tr>
+												<th>Status</th>
+												<td>{{ user.status }}</td>
+											</tr>
+											<tr>
+												<th>Created_at</th>
+												<td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+											</tr>
+											<tr>
+												<th>Updated_at</th>
+												<td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+											</tr>
+										</tbody>
+									</table>
+
+
+<br>
+<br>
+
+
+									<a href="{{ path('admin_user_edit', {'id': user.id}) }}">
+										<button class="btn btn-primary">Edit</button>
+									</a>
+<br>
+<br>
+									{{ include('admin/user/_delete_form.html.twig') }}
+
+									<br>
+									<br>
+									<br>
+									<a href="{{ path('admin_user_index') }}">
+										<button class="btn btn-default btn-sm">Back the list</button>
+									</a>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+	{% endblock %}

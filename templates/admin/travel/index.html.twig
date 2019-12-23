@@ -74,8 +74,9 @@
 													{# <td>{{ travel.createdAt ? travel.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 													                <td>{{ travel.updatedAt ? travel.updatedAt|date('Y-m-d H:i:s') : '' }}</td> #}
 													<td>
-														<a href="{{ path('admin_travel_show', {'id': travel.id}) }}">show</a>
-														<a href="{{ path('admin_travel_edit', {'id': travel.id}) }}">edit</a>
+														<a href="{{ path('admin_travel_show', {'id': travel.id}) }}"><button class="btn btn-primary btn-sm">show</button></a>
+														<a href="{{ path('admin_travel_edit', {'id': travel.id}) }}"><button class="btn btn-secondary btn-sm">edit</button></a>
+                                            </td>
 													</td>
 												</tr>
 											{% else %}
@@ -86,7 +87,7 @@
 										</tbody>
 									</table>
 
-									<a href="{{ path('admin_travel_new') }}">Create new</a>
+									<a href="{{ path('admin_travel_new') }}"><button class="btn btn-success">Create new</button></a>
 								</div>
 							</div>
 						</div>

@@ -1,0 +1,39 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}user new
+{% endblock %}
+
+{% block body %}
+	<div class="main-panel">
+		<div class="content">
+			<div class="panel-header bg-primary-gradient">
+				<div class="page-inner py-5">
+					<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row"></div>
+				</div>
+			</div>
+			<div class="page-inner mt--5">
+				<div class="row-md-12 mt--2">
+					<div class="col-md-12">
+						<div class="card full-height">
+							<div class="card-body">
+								<div class="card-title pb-2 fw-bold">User new</div>
+								<div class="flex-wrap justify-content-around pb-2 pt-4">
+
+									{{ include('admin/user/_form.html.twig') }}
+									<br>
+									<br>
+									<a href="{{ path('admin_user_index') }}">
+										<button class="btn btn-default btn-sm">Back the list</button>
+									</a>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+	{% endblock %}

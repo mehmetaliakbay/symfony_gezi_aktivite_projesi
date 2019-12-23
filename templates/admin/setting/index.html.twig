@@ -38,8 +38,8 @@
 													<td>{{ setting.email }}</td>
 													<td>{{ setting.status }}</td>
 													<td>
-														<a href="{{ path('setting_show', {'id': setting.id}) }}">show</a>
-														<a href="{{ path('setting_edit', {'id': setting.id}) }}">edit</a>
+														<a href="{{ path('setting_show', {'id': setting.id}) }}"> <button class="btn btn-primary btn-sm">show</button></a>
+														<a href="{{ path('setting_edit', {'id': setting.id}) }}"><button class="btn btn-secondary btn-sm">edit</button></a>
 													</td>
 												</tr>
 											{% else %}
