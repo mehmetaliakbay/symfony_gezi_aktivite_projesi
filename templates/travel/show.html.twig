@@ -1,0 +1,88 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Travel
+{% endblock %}
+
+{% block body %}
+
+	<section class="ftco-section ftco-no-pt ftco-no-pb">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 order-md-last ftco-animate py-md-5 mt-md-5">
+					<table class="table">
+						<tbody>
+							<tr>
+								<th>Id</th>
+								<td>{{ travel.id }}</td>
+							</tr>
+							<tr>
+								<th>Title</th>
+								<td>{{ travel.title }}</td>
+							</tr>
+							<tr>
+								<th>Keywords</th>
+								<td>{{ travel.keywords }}</td>
+							</tr>
+							<tr>
+								<th>Description</th>
+								<td>{{ travel.description }}</td>
+							</tr>
+							<tr>
+								<th>Image</th>
+								<td><img src="{{asset('uploads/images/'~travel.image)}}" height="40"></td>
+							</tr>
+							<tr>
+								<th>Status</th>
+								<td>{{ travel.status }}</td>
+							</tr>
+							<tr>
+								<th>Star</th>
+								<td>{{ travel.star }}</td>
+							</tr>
+							<tr>
+								<th>Address</th>
+								<td>{{ travel.address }}</td>
+							</tr>
+							<tr>
+								<th>Phone</th>
+								<td>{{ travel.phone }}</td>
+							</tr>
+							<tr>
+								<th>Fax</th>
+								<td>{{ travel.fax }}</td>
+							</tr>
+							<tr>
+								<th>Email</th>
+								<td>{{ travel.email }}</td>
+							</tr>
+							<tr>
+								<th>City</th>
+								<td>{{ travel.city }}</td>
+							</tr>
+							<tr>
+								<th>Country</th>
+								<td>{{ travel.country }}</td>
+							</tr>
+							<tr>
+								<th>Location</th>
+								<td>{{ travel.location }}</td>
+							</tr>
+							<tr>
+								<th>Created_at</th>
+								<td>{{ travel.createdAt ? travel.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+							</tr>
+							<tr>
+								<th>Updated_at</th>
+								<td>{{ travel.updatedAt ? travel.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<a href="{{ path('user_travel_index') }}">back to list</a>
+
+					<a href="{{ path('user_travel_edit', {'id': travel.id}) }}">edit</a>
+
+					{{ include('travel/_delete_form.html.twig') }}
+
+					{% include ('user/usermenu.html.twig') %}
+				{% endblock %}

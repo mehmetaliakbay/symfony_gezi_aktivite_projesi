@@ -1,0 +1,18 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Edit Travel
+{% endblock %}
+
+{% block body %}
+	<section class="ftco-section ftco-no-pt ftco-no-pb">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 order-md-last ftco-animate py-md-5 mt-md-5">
+
+					{{ include('travel/_form.html.twig', {'button_label': 'Update'}) }}
+
+					<a href="{{ path('user_travel_index') }}">back to list</a>
+
+					{{ include('travel/_delete_form.html.twig') }}
+					{% include ('user/usermenu.html.twig') %}
+				{% endblock %}

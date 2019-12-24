@@ -1,0 +1,21 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}New Travel
+{% endblock %}
+
+{% block body %}
+
+	<section class="ftco-section ftco-no-pt ftco-no-pb">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 order-md-last ftco-animate py-md-5 mt-md-5">
+					<h3>Yeni bir gezi ve aktivite ekle</h3>
+					{{ include('travel/_form.html.twig') }}
+					<br>
+					<br>
+					<a href="{{ path('user_travel_index') }}">
+						<button class="btn btn-default btn-sm">Back the list</button>
+					</a>
+
+					{% include ('user/usermenu.html.twig') %}
+				{% endblock %}

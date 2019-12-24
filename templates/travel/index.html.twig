@@ -1,0 +1,74 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Travel index
+{% endblock %}
+
+{% block body %}
+
+
+<SCRIPT language="JavaScript" type="text/javascript">
+	function openWin( windowURL, windowName,windowFeatures) { window.open(windowURL, windowName, windowFeatures); }
+</SCRIPT>
+	<section class="ftco-section ftco-no-pt ftco-no-pb">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 order-md-last ftco-animate py-md-5 mt-md-5">
+					<table class="table table-bordered table-head-bg-info table-bordered-bd-info mt-4">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Kategori</th>
+								<th>Title</th>
+								<th>Image</th>
+								<th>Status</th>
+								<th>Star</th>
+								<th>Email</th>
+								<th>City</th>
+								<th>Country</th>
+								<th>Gallery</th>
+								<th>actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for travel in travels %}
+								<tr>
+									<td>{{ travel.id }}</td>
+									<td>{{ travel.category }}</td>
+									<td>{{ travel.title }}</td>
+									<td><img src="{{asset('uploads/images/'~travel.image)}}" height="40"></td>
+									<td>{{ travel.status }}</td>
+									<td>{{ travel.star }}</td>
+
+									<td>{{ travel.email }}</td>
+									<td>{{ travel.city }}</td>
+									<td>{{ travel.country }}</td>
+									<td>
+										<a href="javascript:openWin('{{ path('user_image_new',{'id':travel.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=50,left=100,menuBar=no,scrollBars=yes,resizable=no,width=900,height=700');">
+											<img src="{{asset('assets/admin/assets/img')}}/gallery.png" height="40">
+										</a>
+									</td>
+									<td>
+										<a href="{{ path('user_travel_show', {'id': travel.id}) }}">
+											<button class="btn btn-primary btn-sm">show</button>
+										</a>
+										<a href="{{ path('user_travel_edit', {'id': travel.id}) }}">
+											<button class="btn btn-secondary btn-sm">edit</button>
+										</a>
+									</td>
+								</tr>
+							</td>
+						</tbody>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="17">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a href="{{ path('user_travel_new') }}">
+			<button class="btn btn-success">Create new</button>
+		</a>
+
+		{% include ('user/usermenu.html.twig') %}
+	{% endblock %}

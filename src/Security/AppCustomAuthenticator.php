@@ -39,8 +39,13 @@ class AppCustomAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     public function supports(Request $request)
     {
-        return 'app_login' === $request->attributes->get('_route')
-            && $request->isMethod('POST');
+        if(('login_user' === $request->attributes->get('_route')
+            && $request->isMethod('POST')) || ('login_admin' === $request->attributes->get('_route')
+                && $request->isMethod('POST')) ){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function getCredentials(Request $request)
@@ -94,12 +99,12 @@ class AppCustomAuthenticator extends AbstractFormLoginAuthenticator implements P
             return new RedirectResponse($targetPath);
         }
 
-        // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
+        return new RedirectResponse($this->urlGenerator->generate('home'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
     protected function getLoginUrl()
     {
-        return $this->urlGenerator->generate('app_login');
+        return $this->urlGenerator->generate('login_user');
     }
 }
