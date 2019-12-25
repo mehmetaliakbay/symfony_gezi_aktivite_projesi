@@ -1,37 +1,38 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Admin;
 
-use App\Entity\Category;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Admin\Messages;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CategoryType extends AbstractType
+class MessagesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('parentid')
-            ->add('title', TextType::class,['label'=>'Category Name'])
-            ->add('keywords')
-            ->add('description')
+            ->add('name')
+            ->add('email')
+            ->add('subject')
+            ->add('message')
             ->add('status', ChoiceType::class,[
                 'choices' => [
-                    'True' => 'True',
-                    'False' => 'False'
+                    'New' => 'New',
+                    'Read' => 'Read',
+                    'Answered' => 'Answered'
                 ]
             ])
+            ->add('ip')
+            ->add('note')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Category::class,
+            'data_class' => Messages::class,
         ]);
     }
 }

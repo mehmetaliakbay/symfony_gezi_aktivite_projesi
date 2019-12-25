@@ -1,0 +1,100 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Travel
+{% endblock %}
+
+{% block body %}
+
+
+	<section class="ftco-section ftco-no-pb contact-section">
+		<div class="container">
+			<div class="row d-flex contact-info">
+				<div class="col-md-3 d-flex">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-map-signs"></span>
+						</div>
+						<h3 class="mb-2">Address</h3>
+						<p>{{setting[0].title}}</p>
+					</div>
+				</div>
+				<div class="col-md-3 d-flex">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-phone2"></span>
+						</div>
+						<h3 class="mb-2">Contact Number</h3>
+						<p>
+							<a href="tel://1234567920">{{setting[0].phone}}</a>
+						</p>
+					</div>
+				</div>
+				<div class="col-md-3 d-flex">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-paper-plane"></span>
+						</div>
+						<h3 class="mb-2">Email Address</h3>
+						<p>
+							<a href="mailto:info@yoursite.com">{{setting[0].email }}</a>
+						</p>
+					</div>
+				</div>
+				<div class="col-md-3 d-flex">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-globe"></span>
+						</div>
+						<h3 class="mb-2">Sosyal Medya</h3>
+						<p>
+							<a href="#">{{setting[0].facebook }}</a>
+						</p>
+						<p>
+							<a href="#">{{setting[0].twitter }}</a>
+						</p>
+						<p>
+							<a href="#">{{setting[0].instagram }}</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="ftco-section contact-section">
+		<div class="container">
+		{{include('notifications.html.twig')}}
+			<div class="row block-9">
+				<div class="col-md-6 order-md-last d-flex">
+					
+					<form name="messages" method="post" class="bg-light p-5 contact-form">
+						<div class="form-group">
+							<input type="text" id="messages_name" name="messages[name]" class="form-control" placeholder="Your Name">
+						</div>
+						<div class="form-group">
+							<input type="text" id="messages_email" name="messages[email]" class="form-control" placeholder="Your Email">
+						</div>
+						<div class="form-group">
+							<input type="text" id="messages_subject" name="messages[subject]" class="form-control" placeholder="Subject">
+						</div>
+						<div class="form-group">
+							<textarea id="messages_message" name="messages[message]" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+						</div>
+						<div class="form-group">
+							<input type="hidden" id="messages__token" name="messages[_token]" value="DK9_ZfOCbrE8bu8erlWaHO-ek4tIugs1V5kj1Q0I9Fo"/>
+							<input type="hidden" name="token" value="{{ csrf_token('form-message') }}"/>
+							<input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+						</div>
+					</form>
+
+				</div>
+
+				<div class="col-md-6 d-flex">
+					<div id="map" class="bg-white"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+</section>{% endblock %}

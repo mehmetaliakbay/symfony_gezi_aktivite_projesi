@@ -1,0 +1,81 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Travel
+{% endblock %}
+
+{% block body %}
+
+	<section class="ftco-section ftco-no-pt ftco-no-pb">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 order-md-last ftco-animate py-md-5 mt-md-5">
+					<table class="table">
+						<tbody>
+
+							<tr>
+								<th>Title</th>
+								<td>{{ travel.title }}</td>
+							</tr>
+							<tr>
+								<th>Keywords</th>
+								<td>{{ travel.keywords }}</td>
+							</tr>
+							<tr>
+								<th>Description</th>
+								<td>{{ travel.description }}</td>
+							</tr>
+							<tr>
+								<th>Image</th>
+								<td><img src="{{asset('uploads/images/'~travel.image)}}" height="40"></td>
+							</tr>
+							<tr>
+								<th>Status</th>
+								<td>{{ travel.status }}</td>
+							</tr>
+							<tr>
+								<th>Star</th>
+								<td>{{ travel.star }}</td>
+							</tr>
+							<tr>
+								<th>Address</th>
+								<td>{{ travel.address }}</td>
+							</tr>
+							<tr>
+								<th>Phone</th>
+								<td>{{ travel.phone }}</td>
+							</tr>
+							<tr>
+								<th>Fax</th>
+								<td>{{ travel.fax }}</td>
+							</tr>
+							<tr>
+								<th>Email</th>
+								<td>{{ travel.email }}</td>
+							</tr>
+							<tr>
+								<th>City</th>
+								<td>{{ travel.city }}</td>
+							</tr>
+							<tr>
+								<th>Country</th>
+								<td>{{ travel.country }}</td>
+							</tr>
+							<tr>
+								<th>Location</th>
+								<td>{{ travel.location }}</td>
+							</tr>
+							<tr>
+								<th>Detail</th>
+								<td>{{ travel.detail | raw }}</td>
+							</tr>
+
+						</tbody>
+					</table>
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>{% endblock %}

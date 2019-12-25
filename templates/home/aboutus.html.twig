@@ -1,0 +1,60 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Travel
+{% endblock %}
+
+{% block body %}
+<section class="ftco-section services-section bg-light">
+      <div class="container">
+        <div class="row d-flex">
+          <div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate">
+          	<h2 class="mb-4">{{setting[0].title}}</h2>
+				{{setting[0].aboutus | raw}}
+            <p><a href="#" class="btn btn-primary py-3 px-4">Search Destination</a></p>
+          </div>
+          <div class="col-md-6">
+          	<div class="row">
+          		<div class="col-md-6 d-flex align-self-stretch ftco-animate">
+		            <div class="media block-6 services d-block">
+		              <div class="icon"><span class="flaticon-paragliding"></span></div>
+		              <div class="media-body">
+		                <h3 class="heading mb-3">Activities</h3>
+		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+		              </div>
+		            </div>      
+		          </div>
+		          <div class="col-md-6 d-flex align-self-stretch ftco-animate">
+		            <div class="media block-6 services d-block">
+		              <div class="icon"><span class="flaticon-route"></span></div>
+		              <div class="media-body">
+		                <h3 class="heading mb-3">Travel Arrangements</h3>
+		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+		              </div>
+		            </div>    
+		          </div>
+		          <div class="col-md-6 d-flex align-self-stretch ftco-animate">
+		            <div class="media block-6 services d-block">
+		              <div class="icon"><span class="flaticon-tour-guide"></span></div>
+		              <div class="media-body">
+		                <h3 class="heading mb-3">Private Guide</h3>
+		                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+		              </div>
+		            </div>      
+		          </div>
+		          <div class="col-md-6 d-flex align-self-stretch ftco-animate">
+		            <div class="media block-6 services d-block">
+		              <div class="icon"><span class="flaticon-map"></span></div>
+		              <div class="media-body">
+		                <h3 class="heading mb-3">Adresimiz</h3>
+		                <p>{{setting[0].adress}}</p>
+		              </div>
+		            </div>      
+		          </div>
+          	</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+</section>
+{% endblock %}

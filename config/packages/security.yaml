@@ -1,8 +1,9 @@
 security:
+    access_denied_url: /login
     encoders:
         App\Entity\User:
             algorithm: auto
-    access_denied_url: /login
+
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:

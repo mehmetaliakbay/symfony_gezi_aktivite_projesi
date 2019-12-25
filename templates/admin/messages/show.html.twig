@@ -1,8 +1,7 @@
 {% extends 'adminbase.html.twig' %}
-{% block title %}Category
+{% block title %}Category index
 {% endblock %}
 {% block body %}
-
 	<div class="main-panel">
 		<div class="content">
 			<div class="panel-header bg-primary-gradient">
@@ -15,64 +14,66 @@
 					<div class="col-md-12">
 						<div class="card full-height">
 							<div class="card-body">
-								<div class="card-title pb-2 fw-bold">{{ category.title}}
-									Messaji goster</div>
+								<div class="card-title pb-2 fw-bold">
+									Kategoriler</div>
+
 								<div class="flex-wrap justify-content-around pb-2 pt-4">
-
-
 									<table class="table">
 										<tbody>
 											<tr>
 												<th>Id</th>
-												<td>{{ category.id }}</td>
+												<td>{{ message.id }}</td>
 											</tr>
 											<tr>
-												<th>Parentid</th>
-												<td>{{ category.parentid }}</td>
+												<th>Name</th>
+												<td>{{ message.name }}</td>
 											</tr>
 											<tr>
-												<th>Title</th>
-												<td>{{ category.title }}</td>
+												<th>Subject</th>
+												<td>{{ message.subject }}</td>
 											</tr>
 											<tr>
-												<th>Keywords</th>
-												<td>{{ category.keywords }}</td>
-											</tr>
-											<tr>
-												<th>Description</th>
-												<td>{{ category.description }}</td>
-											</tr>
-											<tr>
-												<th>Image</th>
-												<td>{{ category.image }}</td>
+												<th>Message</th>
+												<td>{{ message.message }}</td>
 											</tr>
 											<tr>
 												<th>Status</th>
-												<td>{{ category.status }}</td>
+												<td>{{ message.status }}</td>
+											</tr>
+											<tr>
+												<th>Ip</th>
+												<td>{{ message.ip }}</td>
+											</tr>
+											<tr>
+												<th>Note</th>
+												<td>{{ message.note }}</td>
 											</tr>
 											<tr>
 												<th>Created_at</th>
-												<td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+												<td>{{ message.createdAt ? message.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 											</tr>
 											<tr>
 												<th>Updated_at</th>
-												<td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+												<td>{{ message.updatedAt ? message.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
 											</tr>
 										</tbody>
 									</table>
 
-
-									<br><br>
-									<a href="{{ path('admin_category_edit', {'id': category.id}) }}">
-										<button class="btn btn-primary">Edit</button>
+									<br>
+									<br>
+									<a href="{{ path('admin_messages_edit', {'id': message.id}) }}">		<button class="btn btn-primary">Edit</button>
 									</a>
 									<br>
 									<br>
-									{{ include('admin/category/_delete_form.html.twig') }}
-									<br><br>
-									<a href="{{ path('admin_category_index') }}">
+									
+
+									{{ include('admin/messages/_delete_form.html.twig') }}
+									<br>
+									<br>
+									<a href="{{ path('admin_messages_index') }}">
 										<button class="btn btn-default btn-sm">Back the list</button>
 									</a>
+
 
 								</div>
 							</div>

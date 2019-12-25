@@ -13,7 +13,7 @@
 					<a href="/" class="nav-link">Anasayfa</a>
 				</li>
 				<li class="nav-item">
-					<a href="about.html" class="nav-link">Hakkında</a>
+					<a href="/aboutus" class="nav-link">Hakkında</a>
 				</li>
 				<li class="nav-item">
 					<a href="destination.html" class="nav-link">Hedef</a>
@@ -22,7 +22,7 @@
 					<a href="blog.html" class="nav-link">Blog</a>
 				</li>
 				<li class="nav-item">
-					<a href="contact.html" class="nav-link">İletişim</a>
+					<a href="/contact" class="nav-link">İletişim</a>
 				</li>
 
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -50,3 +50,18 @@
 	</div>
 </nav>
 <!-- END nav -->
+
+  
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('{{asset('assets')}}/home/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate pb-5 text-center">
+            <h1 class="mb-3 bread">Travel Tips &amp; Blog</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section> 
+
+
