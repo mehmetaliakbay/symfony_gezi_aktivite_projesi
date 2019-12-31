@@ -1,0 +1,81 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Category index
+{% endblock %}
+{% block body %}
+	<div class="main-panel">
+		<div class="content">
+			<div class="panel-header bg-primary-gradient">
+				<div class="page-inner py-5">
+					<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row"></div>
+				</div>
+			</div>
+			<div class="page-inner mt--5">
+				<div class="row-md-12 mt--2">
+					<div class="col-md-12">
+						<div class="card full-height">
+							<div class="card-body">
+								<div class="card-title pb-2 fw-bold">
+									Gelen Mesajlari Duzenle</div>
+
+								<div class="flex-wrap justify-content-around pb-2 pt-4">
+
+									<table class="table">
+										<tbody>
+											<tr>
+												<th>Id</th>
+												<td>{{ comment.id }}</td>
+											</tr>
+											<tr>
+												<th>Subject</th>
+												<td>{{ comment.subject }}</td>
+											</tr>
+											<tr>
+												<th>Comment</th>
+												<td>{{ comment.comment }}</td>
+											</tr>
+											<tr>
+												<th>Status</th>
+												<td>{{ comment.status }}</td>
+											</tr>
+											<tr>
+												<th>Ip</th>
+												<td>{{ comment.ip }}</td>
+											</tr>
+											<tr>
+												<th>Userid</th>
+												<td>{{ comment.userid }}</td>
+											</tr>
+											<tr>
+												<th>Created_at</th>
+												<td>{{ comment.createdAt ? comment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+											</tr>
+											<tr>
+												<th>Updated_at</th>
+												<td>{{ comment.updatedAt ? comment.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+											</tr>
+											<tr>
+												<th>Rate</th>
+												<td>{{ comment.rate }}</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<a href="{{ path('admin_comment_index') }}">back to list</a>
+
+									<a href="{{ path('admin_comment_edit', {'id': comment.id}) }}">edit</a>
+
+									{{ include('admin/comment/_delete_form.html.twig') }}
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+
+	{% endblock %}

@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Admin\Messages;
 use App\Entity\Travel;
 use App\Form\Admin\MessagesType;
+use App\Repository\Admin\CommentRepository;
+use App\Repository\ImageRepository;
 use App\Repository\SettingRepository;
 use App\Repository\TravelRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,10 +42,16 @@ class HomeController extends AbstractController
     /**
      * @Route("travel/{id}", name="travel_show", methods={"GET"})
      */
-    public function show(Travel $travel): Response
+    public function show(Travel $travel,$id,ImageRepository $imageRepository,CommentRepository $commentRepository): Response
     {
+        
+        $images = $imageRepository->findBy(["travel"=>$id]);
+        $comments = $commentRepository->findBy(["travelid"=>$id]);
+
         return $this->render('home/travelshow.html.twig', [
             'travel' => $travel,
+            'image' => $images,
+            'comments' => $comments,
         ]);
     }
 
