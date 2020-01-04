@@ -1,0 +1,49 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}User index
+{% endblock %}
+
+{% block body %}
+	<section class="ftco-section ftco-no-pt ftco-no-pb">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 order-md-last ftco-animate py-md-5 mt-md-5">
+					<table class="table table-bordered table-head-bg-info table-bordered-bd-info mt-4">
+						<thead>
+							<tr>
+								<th>Subject</th>
+								<th>Comment</th>
+								<th>Status</th>
+								<th>Title</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for comment in comments %}
+								<tr>
+									<td>{{ comment.subject }}</td>
+									<td>{{ comment.comment }}</td>
+									<td>{{ comment.status }}</td>
+
+									<td>
+										<a href="{{ path('travel_show', {'id':comment.travelid}) }}">
+											{{ comment.title }}</a>
+									</td>
+									
+									<td>
+										<a href="{{ path('travel_show', {'id':comment.travelid}) }}">
+											{{ comment.title }}</a>
+									</td>
+								</tr>
+							</td>
+						</tbody>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="17">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+        	{% include ('user/usermenu.html.twig') %}
+	{% endblock %}

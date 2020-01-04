@@ -21,8 +21,9 @@ class TravelController extends AbstractController
      */
     public function index(TravelRepository $travelRepository): Response
     {
+        $travels = $travelRepository->getAllTravels();
         return $this->render('admin/travel/index.html.twig', [
-            'travels' => $travelRepository->findAll(),
+            'travels' => $travels,
         ]);
     }
 

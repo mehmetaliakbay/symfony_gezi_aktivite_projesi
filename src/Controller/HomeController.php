@@ -46,7 +46,7 @@ class HomeController extends AbstractController
     {
         
         $images = $imageRepository->findBy(["travel"=>$id]);
-        $comments = $commentRepository->findBy(["travelid"=>$id]);
+        $comments = $commentRepository->findBy(["travelid"=>$id,'status'=>'True']);
 
         return $this->render('home/travelshow.html.twig', [
             'travel' => $travel,

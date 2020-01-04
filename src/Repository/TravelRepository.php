@@ -47,4 +47,24 @@ class TravelRepository extends ServiceEntityRepository
         ;
     }
     */
+    // *** LEFT JOIN WITH SQL ******
+    public function getAllTravels(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $sql= '
+        SELECT t.*,c.title as catname FROM travel t
+        JOIN category c  ON c.id = t.category_id
+        ORDER BY c.title ASC
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        // return an array of arrays (i.e a raw data set)
+
+        return $stmt->fetchAll();
+
+
+    }
+
+    
 }

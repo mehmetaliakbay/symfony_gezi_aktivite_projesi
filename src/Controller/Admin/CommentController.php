@@ -20,8 +20,12 @@ class CommentController extends AbstractController
      */
     public function index(CommentRepository $commentRepository): Response
     {
+        $comments = $commentRepository->getAllComments();
+        //dump($comments);
+        //die();
+
         return $this->render('admin/comment/index.html.twig', [
-            'comments' => $commentRepository->findAll(),
+            'comments' => $comments,
         ]);
     }
 
@@ -47,6 +51,7 @@ class CommentController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    
 
     /**
      * @Route("/{id}", name="admin_comment_show", methods={"GET"})

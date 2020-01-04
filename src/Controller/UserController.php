@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Admin\Comment;
 use App\Entity\User;
+use App\Form\Admin\CommentType;
 use App\Form\UserType;
+use App\Repository\Admin\CommentRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -24,6 +27,19 @@ class UserController extends AbstractController
     {
         return $this->render('user/show.html.twig');
     }
+
+    /**
+     * @Route("/comments", name="user_comments", methods={"GET"})
+     */
+    public function comments(CommentRepository $commentRepository): Response
+    {
+        $user = $this->getUser();
+        $comments = $commentRepository->getAllCommentsUser($user->getId());
+        return $this->render('user/comments.html.twig',[
+            'comments' => $comments,
+        ]);
+    }
+
 
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
@@ -167,27 +183,37 @@ class UserController extends AbstractController
 
 
 
-     /**
-     * @Route("/newComment/{id}", name="user_new_comment", methods={"GET","POST"})
+    /**
+     * @Route("/newcomment/{id}", name="user_new_comment", methods={"GET","POST"})
      */
-    public function newComment(Request $request,$id, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function newComment(Request $request, $id): Response
     {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        $submittedToken = $request->request->get('token');
+
+        if ($form->isSubmitted() && $this->isCsrfTokenValid('comment', $submittedToken)) {
+
+
             $entityManager = $this->getDoctrine()->getManager();
 
-            $entityManager->persist($user);
+            $comment->setStatus('New');
+            $comment->setIp($_SERVER['REMOTE_ADDR']);
+            $comment->setTravelid($id);
+            $user = $this->getUser();
+            $comment->setUserid($user->getId());
+
+
+            $entityManager->persist($comment);
             $entityManager->flush();
 
-            return $this->redirectToRoute('user_index');
+            $this->addFlash('success', 'Your comment has been sent successfuly');
+
+            return $this->redirectToRoute('travel_show', ['id' => $id]);
         }
 
-        return $this->render('user/new.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('travel_show', ['id' => $id]);
     }
 }

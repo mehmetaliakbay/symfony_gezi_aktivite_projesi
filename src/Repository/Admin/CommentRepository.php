@@ -5,6 +5,7 @@ namespace App\Repository\Admin;
 use App\Entity\Admin\Comment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\Mapping\OrderBy;
 
 /**
  * @method Comment|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,4 +48,40 @@ class CommentRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    // *** LEFT JOIN WITH SQL ******
+    public function getAllComments(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $sql= '
+        SELECT C.*,u.name,u.surname,t.title FROM comment c
+        JOIN user u ON u.id = c.userid
+        JOIN travel t ON t.id = c.travelid
+        ORDER BY c.id DESC
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        // return an array of arrays (i.e a raw data set)
+
+        return $stmt->fetchAll();
+
+
+    }
+
+    
+    // *** LEFT JOIN WITH Doctrine ******
+    public function getAllCommentsUser($userid): array
+    {
+       $qb = $this->createQueryBuilder('c')
+       ->select('c.id,c.subject,c.comment,c.created_at,c.status,c.travelid,t.title')
+       ->leftJoin('App\Entity\Travel','t','WITH','t.id=c.travelid')
+       ->where('c.userid = :userid')
+       ->setParameter('userid',$userid)
+       ->OrderBy('c.id','DESC');
+       $query = $qb->getQuery();
+       return $query->execute();
+
+
+    }
 }
