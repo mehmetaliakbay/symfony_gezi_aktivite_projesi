@@ -6,6 +6,7 @@ use App\Entity\Admin\Comment;
 use App\Entity\User;
 use App\Form\Admin\CommentType;
 use App\Form\UserType;
+use App\Form\User1Type;
 use App\Repository\Admin\CommentRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -114,7 +115,7 @@ class UserController extends AbstractController
 
 
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(User1Type::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

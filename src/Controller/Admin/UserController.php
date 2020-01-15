@@ -58,13 +58,13 @@ class UserController extends AbstractController
                 $user->setImage($fileName);
             }
             //------------------Image Upload--------------//
-   // encode the plain password
-   $user->setPassword(
-    $passwordEncoder->encodePassword(
-        $user,
-        $form->get('password')->getData()
-    )
-);
+            // encode the plain password
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('password')->getData()
+                )
+            );
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -91,7 +91,7 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}/edit", name="admin_user_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, User $user,UserPasswordEncoderInterface $passwordEncoder): Response
+    public function edit(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -117,13 +117,13 @@ class UserController extends AbstractController
             }
             //------------------Image Upload--------------//
 
-   // encode the plain password
-   $user->setPassword(
-    $passwordEncoder->encodePassword(
-        $user,
-        $form->get('password')->getData()
-    )
-);
+            // encode the plain password
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('password')->getData()
+                )
+            );
 
             $this->getDoctrine()->getManager()->flush();
 

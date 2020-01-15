@@ -63,7 +63,7 @@ class UserType extends AbstractType
                 'choices' => [
                     'True' => 'True',
                     'False' => 'False'
-                ]
+                ]   
             ])
             ->add('roles', ChoiceType::class, [
                 'choices' => [

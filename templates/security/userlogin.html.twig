@@ -15,12 +15,12 @@
 							<div class="form-group">
 								<div class="form-group">
 									<label for="email">Email *</label>
-									<input type="email" class="form-control" id="email"  value="{{ last_username }}" name="email" placeholder="Email">
+									<input type="email" class="form-control" id="email" value="{{ last_username }}" name="email" placeholder="Email">
 								</div>
 								<label for="name">Password *</label>
 								<input type="password" class="form-control" id="name" name="password" required>
 							</div>
-                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 							<div class="form-group">
 								<input type="submit" value="Login" class="btn py-3 px-4 btn-primary">
@@ -29,10 +29,10 @@
 						</form>
 					</div>
 
-					
-		</div>
-	</div>
-</section>
-<!-- .section -->
 
-				{% endblock %}
+				</div>
+			</div>
+		</section>
+		<!-- .section -->
+
+	{% endblock %}

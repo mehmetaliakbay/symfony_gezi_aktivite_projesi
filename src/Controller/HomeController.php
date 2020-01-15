@@ -79,7 +79,6 @@ class HomeController extends AbstractController
         $submittedToken = $request->request->get('token');
         $setting = $settingRepository->findAll();
 
-
         if ($form->isSubmitted()) {
 
             if ($this->isCsrfTokenValid('form-message', $submittedToken)) {
